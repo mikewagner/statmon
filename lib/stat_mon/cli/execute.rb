@@ -8,13 +8,13 @@ module StatMon
       end
       
       def listen
-        load_config( @params[:config] )
+        config = load_config( @params[:config] )
+        puts config.inspect
       end
       
       def load_config( config )
         abort "Unable to find config file" unless File.exist?( config )
-        options = YAML.load( File.read( config ) )
-        puts options.inspect
+        YAML.load( File.read( config ) )
       end
       
    

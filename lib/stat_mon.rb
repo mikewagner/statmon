@@ -4,9 +4,14 @@ require 'eventmachine'
 
 module StatMon
   
-  autoload :Configuration,       'stat_mon/configuration'
-  autoload :Listner,             'stat_mon/listener'
+  autoload :Listener,             'stat_mon/listener'
+  
+  module CLI
+    autoload :Execute,           'stat_mon/cli/execute'
+  end
 
 
-  extend configuration
+
+  extend Listener  
+
 end
