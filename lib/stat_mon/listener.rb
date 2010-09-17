@@ -1,19 +1,20 @@
 module StatMon
   module Listener
-    
 
-    def self.load( config )
-      config.each do |name, params|
-        self.registry << StatMon::Task.new( name, params ) 
+    def config( config )
+      @config = config
+    end
+
+    def start
+      @config.each do |config|
+        task = StatMon::Task.new( config ) 
+        self.registry << task
       end
     end
 
-
-    def self.start
-
+    def reqistry
+      @registry ||= StatMon::Registry.new
     end
-
-      
     
   end
 end

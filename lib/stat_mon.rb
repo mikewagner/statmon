@@ -3,15 +3,10 @@
 require 'eventmachine'
 
 module StatMon
-  
-  autoload :Listener,             'stat_mon/listener'
-  
-  module CLI
-    autoload :Execute,           'stat_mon/cli/execute'
-  end
 
-
-
+  autoload :Listener, 'stat_mon/listener'
+  autoload :Registry, 'stat_mon/registry'
+ 
   extend Listener  
 
 end

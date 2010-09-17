@@ -1,6 +1,6 @@
 module StatMon
   class Registry
-t
+
 
     def initialize
       @processes = {}

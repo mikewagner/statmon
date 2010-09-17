@@ -1,27 +1,22 @@
-require File.dirname(__FILE__) + '/helper'
-
+require File.expand_path( File.dirname(__FILE__) + '/helper' )
 
 class StatMonTest < Test::Unit::TestCase
 
   def setup
-    @config = { 
+    @config = {
       "iostat" => {
         "interval" => 5,
-        "process"  => "iostat -d -k -t -x",
-        "log" => {
-          "network" => "http://localhost/",
-          "port"    => 80
-        }
-      }   
+        "process" => [
+          { "log" => { "file" => "/home/mwagner/iostat.log"} },
+          { "log" => { "network" => "http://localhost/", "port" => 80 } }
+        ]
+      }
     }   
   end 
 
-  
-  should "have invalid config error" do
-    lambda {
-      StatMon.config()
-    }.should raise_error
-  end 
+  should "have"
+
+
 
 
 end
