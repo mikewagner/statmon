@@ -1,8 +1,0 @@
-iostat:
-  interval: 5
-  process: 'iostat -d -k -t -x'
-  - log:
-      file: '/home/mwagner/iostat.log'
-  - log:
-      network: 'http://localhost/'
-      port: 80

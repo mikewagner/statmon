@@ -1,0 +1,15 @@
+Stat.monitor do |s|
+  s.name     = 'iostat'
+  s.process  = 'iostat'
+  s.interval = 5
+  
+  s.logger do |log|
+    log.file = 'iostat.log'
+  end
+  
+  s.logger do |log|
+    log.network = 'http://localhost/'
+    log.port = 80
+  end
+  
+end
