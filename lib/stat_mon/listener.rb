@@ -1,21 +1,27 @@
 module StatMon
+
+  class DuplicateMonitorName < StandardError; end
+
+
   module Listener
 
+    def init
+      @monitors = Hash.new
+    end
+
     def monitors
-      @monitors ||= Hash.new
+      @monitors
     end
 
     def monitor(&block)
-      
-      klass = Class.new
-      klass.instance_eval( 'def name=(p); @name = p; end' )
-      yield(klass) if block_given?
 
-      monitors[klass.name] = klass
+      task = Task.new
+      yield(task)
+
+      raise DuplicateMonitorName, "Duplicate monitor name" if monitors.has_key? task.name
+      monitors[task.name] = task
 
     end
-
-
     
   end
 end

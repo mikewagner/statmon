@@ -5,7 +5,7 @@ require 'eventmachine'
 module StatMon
 
   autoload :Listener,  'stat_mon/listener'
-
+  autoload :Task,      'stat_mon/task'
 
   extend Listener
 
