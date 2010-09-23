@@ -4,9 +4,9 @@ require 'eventmachine'
 
 module StatMon
 
-  autoload :Listener, 'stat_mon/listener'
-  autoload :Registry, 'stat_mon/registry'
- 
-  extend Listener  
+  autoload :Listener,  'stat_mon/listener'
+
+
+  extend Listener
 
 end

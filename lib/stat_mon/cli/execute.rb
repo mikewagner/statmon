@@ -4,20 +4,27 @@ module StatMon
    
       def initialize(params)
         @params = params
-        listen
+        start
       end
       
-      def listen
+      def start
         config = load_config( @params[:config] )
-        puts config.inspect
       end
       
       def load_config( config )
         abort "Unable to find config file" unless File.exist?( config )
-        YAML.load( File.read( config ) )
+        load_stat_file( config )
       end
+     
       
-   
+      def load_stat_file( stat_file )
+        load File.expand_path( stat_file )
+      rescue Exception => e
+        puts "There was an error in #{stat_file}"
+        puts "\t" + e.message
+        puts "\t" + e,backtrace.join("\n\y\t")
+        
+      end
     end
   end
 end

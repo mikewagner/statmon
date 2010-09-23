@@ -1,20 +1,21 @@
 module StatMon
   module Listener
 
-    def config( config )
-      @config = config
+    def monitors
+      @monitors ||= Hash.new
     end
 
-    def start
-      @config.each do |config|
-        task = StatMon::Task.new( config ) 
-        self.registry << task
-      end
+    def monitor(&block)
+      
+      klass = Class.new
+      klass.instance_eval( 'def name=(p); @name = p; end' )
+      yield(klass) if block_given?
+
+      monitors[klass.name] = klass
+
     end
 
-    def reqistry
-      @registry ||= StatMon::Registry.new
-    end
+
     
   end
 end

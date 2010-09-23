@@ -1,4 +1,4 @@
-Stat.monitor do |s|
+StatMon.monitor do |s|
   s.name     = 'iostat'
   s.process  = 'iostat'
   s.interval = 5
