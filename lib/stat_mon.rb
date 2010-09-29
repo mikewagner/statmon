@@ -4,8 +4,10 @@ require 'eventmachine'
 
 module StatMon
 
-  autoload :Listener,  'stat_mon/listener'
-  autoload :Task,      'stat_mon/task'
+  autoload :DuplicateMonitorName,  'stat_mon/exceptions'
+
+  autoload :Listener,              'stat_mon/listener'
+  autoload :Task,                  'stat_mon/task'
 
   extend Listener
 

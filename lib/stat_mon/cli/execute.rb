@@ -8,6 +8,7 @@ module StatMon
       end
       
       def start
+        StatMon.init
         config = load_config( @params[:config] )
       end
       
@@ -22,7 +23,7 @@ module StatMon
       rescue Exception => e
         puts "There was an error in #{stat_file}"
         puts "\t" + e.message
-        puts "\t" + e,backtrace.join("\n\y\t")
+        puts "\t" + e.backtrace.join("\n\y\t")
         
       end
     end

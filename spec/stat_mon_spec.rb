@@ -20,14 +20,14 @@ describe StatMon do
         m.name = 'iostat'
         monitor = m
       end
-      StatMon.monitors.keys.length.should == 1
+      StatMon.should have(1).monitors
       StatMon.monitors['iostat'].should == monitor
     end
 
     it "should allow multiple monitors" do
       StatMon.monitor { |m| m.name = 'foo' }
       StatMon.monitor { |m| m.name = 'bar' }
-      StatMon.monitors.keys.size.should == 2
+      StatMon.should have(2).monitors
     end
 
     it "should raise error for duplicate monitor name" do

@@ -1,8 +1,5 @@
 module StatMon
 
-  class DuplicateMonitorName < StandardError; end
-
-
   module Listener
 
     def init
