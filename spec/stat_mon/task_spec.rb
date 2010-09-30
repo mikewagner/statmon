@@ -26,7 +26,6 @@ describe StatMon::Task do
       @task.should_not be_valid
     end
 
-
   end
 
 
@@ -52,11 +51,17 @@ describe StatMon::Task do
         l.file = '/path/to/file'
         logger = l
       end
-      @task.should have(1).loggers      
+      @task.should have(1).loggers 
+      @task.loggers.first.should == logger     
     end
-    
+   
+    it "should store multiple loggers" do
+      @task.logger { |l| l.file = '/foo' }
+      @task.logger { |l| l.file = '/bar' }
+      @task.should have(2).loggers
+    end 
+ 
   end
-
 
 
 end

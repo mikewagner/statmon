@@ -21,11 +21,12 @@ module StatMon
       @loggers ||= Array.new
     end
 
-
     def logger( &block )
-        
-    end
+      logger = Log.new
+      yield(logger)
 
+      loggers << logger       
+    end
 
   end
 end

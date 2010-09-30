@@ -1,5 +1,4 @@
 module StatMon
-
   module Listener
 
     def init
@@ -17,6 +16,14 @@ module StatMon
       raise DuplicateMonitorName, "Duplicate monitor name" if monitors.has_key? task.name
       monitors[task.name] = task
     end
-    
+  
+    def start
+      EventMachine.run
+        monitors.each do |monitor|
+          
+        end 
+      end
+    end
+  
   end
 end
