@@ -23,7 +23,7 @@ module StatMon
 
 
     def logger( &block )
-
+        
     end
 
 

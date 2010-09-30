@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe StatMon::Task do
 
-  context ".valid?" do
+  context "valid?" do
     
     before do
       @task = StatMon::Task.new do |t|
@@ -30,6 +30,32 @@ describe StatMon::Task do
   end
 
 
+  context "loggers" do
+    before do
+      @task = StatMon::Task.new      
+    end
+    
+    it "should default to empty array" do
+      @task.loggers.should == Array.new      
+    end
+  end
+
+
+  context "logger" do
+    before do
+      @task = StatMon::Task.new
+    end
+    
+    it "should store logger" do
+      logger = nil
+      @task.logger do |l|
+        l.file = '/path/to/file'
+        logger = l
+      end
+      @task.should have(1).loggers      
+    end
+    
+  end
 
 
 
