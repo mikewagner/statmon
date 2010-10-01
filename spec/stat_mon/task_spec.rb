@@ -63,5 +63,23 @@ describe StatMon::Task do
  
   end
 
+  context "log" do
+    
+    before do
+      @task = StatMon::Task.new do |t|
+        t.name = 'foo'
+      end
+      @logger = StatMon::Log.new { |l| l.file = '/foo' }
+      @task.stub!(:loggers).and_return( [@logger] )
+    end
+
+    it "should log output to each logger" do
+      @logger.should_receive(:info).and_return(:true)
+      @task.log('The quick brown fox jumps over the lazy dog')
+    end
+
+
+  end
+
 
 end

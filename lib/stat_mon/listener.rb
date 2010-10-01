@@ -18,10 +18,15 @@ module StatMon
     end
   
     def start
-      EventMachine.run
-        monitors.each do |monitor|
-          
-        end 
+      puts monitors.inspect
+      EventMachine.run do
+        monitors.each do |name, task|
+          EventMachine.add_periodic_timer(task.interval) do
+            EventMachine.system( task.process ) do |output, status|
+              puts output
+            end
+          end
+        end
       end
     end
   

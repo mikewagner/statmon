@@ -6,7 +6,7 @@ module StatMon
                   :port
 
 
-    def initialize(&block)
+    def initialize()
       yield(self) if block_given?
     end
 

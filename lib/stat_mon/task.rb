@@ -16,6 +16,12 @@ module StatMon
       valid = false if self.process.nil?
       valid
     end
+
+    def log( msg )
+      loggers.each do |logger|
+        logger.info( msg )
+      end
+    end
   
     def loggers
       @loggers ||= Array.new

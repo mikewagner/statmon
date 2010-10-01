@@ -10,6 +10,8 @@ module StatMon
       def start
         StatMon.init
         config = load_config( @params[:config] )
+
+        StatMon.start
       end
       
       def load_config( config )
