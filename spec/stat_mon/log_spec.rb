@@ -5,15 +5,11 @@ describe StatMon::Log do
   context "initialization" do
     it "should accept a block" do
       log = StatMon::Log.new do |l|
-        l.file = '/foo'  
+        l.path = '/foo'  
       end
-      log.file.should == '/foo'
+      log.path.should == '/foo'
     end    
 
   end
-
-
-    
-
 
 end

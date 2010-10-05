@@ -47,8 +47,8 @@ describe StatMon::Task do
     
     it "should store logger" do
       logger = nil
-      @task.logger do |l|
-        l.file = '/path/to/file'
+      @task.logger(:file) do |l|
+        l.path = '/path/to/file'
         logger = l
       end
       @task.should have(1).loggers 
@@ -56,8 +56,8 @@ describe StatMon::Task do
     end
    
     it "should store multiple loggers" do
-      @task.logger { |l| l.file = '/foo' }
-      @task.logger { |l| l.file = '/bar' }
+      @task.logger { |l| l.path = '/foo' }
+      @task.logger { |l| l.path = '/bar' }
       @task.should have(2).loggers
     end 
  
@@ -69,7 +69,7 @@ describe StatMon::Task do
       @task = StatMon::Task.new do |t|
         t.name = 'foo'
       end
-      @logger = StatMon::Log.new { |l| l.file = '/foo' }
+      @logger = StatMon::Log.new { |l| l.path = '/foo' }
       @task.stub!(:loggers).and_return( [@logger] )
     end
 

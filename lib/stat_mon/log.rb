@@ -1,9 +1,7 @@
 module StatMon
   class Log
 
-    attr_accessor :file,
-                  :network,
-                  :port
+    attr_accessor :path
 
 
     def initialize

@@ -27,9 +27,9 @@ module StatMon
       @loggers ||= Array.new
     end
 
-    def logger( &block )
+    def logger( type = :file, &block )
       logger = Log.new
-      yield(logger)
+      yield(logger) if block_given?
 
       loggers << logger       
     end

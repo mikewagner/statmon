@@ -3,12 +3,12 @@ StatMon.monitor do |s|
   s.process  = 'iostat'
   s.interval = 5
   
-  s.logger do |log|
-    log.file = 'iostat.log'
+  s.logger(:file) do |log|
+    log.path = 'iostat.log'
   end
   
-  s.logger do |log|
-    log.network = 'http://localhost/'
+  s.logger(:network) do |log|
+    log.address = 'http://localhost/'
     log.port = 80
   end
   
