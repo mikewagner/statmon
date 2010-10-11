@@ -1,12 +1,11 @@
 module StatMon
-  class Log
-
-    attr_accessor :path
+  class Log < Logger
 
 
-    def initialize
-      yield(self) if block_given?
+    def initialize( io )
+      super( io )
     end
+
 
   end
 end

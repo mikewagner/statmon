@@ -1,10 +1,7 @@
 module StatMon
   class Task
 
-    attr_accessor :name,
-                  :process,
-                  :interval
-                  
+    attr_accessor :name, :process, :interval
 
     def initialize(&block)
       yield(self) if block_given?
@@ -18,6 +15,7 @@ module StatMon
     end
 
     def log( msg )
+      puts msg
       loggers.each do |logger|
         logger.info( msg )
       end
@@ -27,11 +25,12 @@ module StatMon
       @loggers ||= Array.new
     end
 
-    def logger( type = :file, &block )
-      logger = Log.new
-      yield(logger) if block_given?
-
-      loggers << logger       
+    def logger( opts )
+      logger = nil
+      if opts.has_key?(:file)
+        logger = Log.new( opts[:file] )
+      end
+      loggers << logger if logger
     end
 
   end

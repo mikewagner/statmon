@@ -1,15 +1,10 @@
 StatMon.monitor do |s|
   s.name     = 'iostat'
   s.process  = 'iostat'
-  s.interval = 5
+  s.interval = 1
   
-  s.logger(:file) do |log|
-    log.path = 'iostat.log'
-  end
-  
-  s.logger(:network) do |log|
-    log.address = 'http://localhost/'
-    log.port = 80
-  end
+  s.logger( :file => 'iostat1.log' )
+  s.logger( :file => 'iostat2.log' )
+  #s.logger( :network => 'http://localhost/', :port => 80 )
   
 end
