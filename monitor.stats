@@ -1,10 +1,28 @@
 StatMon.monitor do |s|
   s.name     = 'iostat'
   s.process  = 'iostat'
-  s.interval = 1
+  s.interval = 5
   
-  s.logger( :file => 'iostat1.log' )
-  s.logger( :file => 'iostat2.log' )
+  s.logger( :file => 'iostat.log' )
   #s.logger( :network => 'http://localhost/', :port => 80 )
   
+end
+
+
+StatMon.monitor do |s|
+  s.name = 'vmstat'
+  s.process = 'vmstat'
+  s.interval = 5
+
+  s.logger( :file => 'vmstat.log' )
+
+end
+
+StatMon.monitor do |s|
+  s.name = 'uptime'
+  s.process = 'uptime'
+  s.interval = 5
+
+  s.logger( :file => 'uptime.log' )
+
 end
