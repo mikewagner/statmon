@@ -21,7 +21,7 @@ end
 StatMon.monitor do |s|
   s.name = 'uptime'
   s.process = 'uptime'
-  s.interval = 5
+  s.interval = 1
 
   s.logger( :file => 'uptime.log' )
 

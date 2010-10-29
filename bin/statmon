@@ -13,6 +13,9 @@ opts = OptionParser.new do |opts|
 Usage:
   Starting:
     statmon [-c <config file>]
+    
+  Querying:
+    statmon -v 
 
   Options:
 EOF
@@ -20,16 +23,23 @@ EOF
   opts.on("-cCONFIG", "--config-file CONFIG", "Configuration file") do |x|
     options[:config] = x
   end
+
+  opts.on("-v", "--version", "Print the version number and exit") do
+    options[:version] = true
+  end
+
 end
 
 opts.parse!
 
 begin
-  require 'stat_mon/cli/execute'
-  StatMon::CLI::Execute.new(options)
+  if !options[:config] && options[:version]
+    require 'stat_mon'
+    StatMon.version
+  else
+    require 'stat_mon/cli/execute'
+    StatMon::CLI::Execute.new(options)
+  end
 rescue Exception => e
   puts e
 end
-
-exit(0) # It's all good!
-

@@ -15,7 +15,6 @@ module StatMon
     end
 
     def log( msg )
-      puts msg
       loggers.each do |logger|
         logger.info( msg )
       end
