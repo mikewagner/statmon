@@ -4,7 +4,7 @@ describe StatMon::Log do
 
   context "initialization" do
     it "should return logger" do
-      log = StatMon::Log.new('foo')
+      log = StatMon::Log.new('/dev/null')
       log.should be_instance_of StatMon::Log
       log.class.superclass.should == Logger
     end
