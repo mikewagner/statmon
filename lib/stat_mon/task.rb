@@ -16,7 +16,7 @@ module StatMon
 
     def log( msg )
       loggers.each do |logger|
-        logger.info( msg )
+        msg.split(/\n/).each { |m| logger.info(m) }
       end
     end
   
