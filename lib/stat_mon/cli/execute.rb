@@ -18,7 +18,6 @@ module StatMon
         abort "Unable to find config file" unless File.exist?( config )
         load_stat_file( config )
       end
-     
       
       def load_stat_file( stat_file )
         load File.expand_path( stat_file )
@@ -26,7 +25,6 @@ module StatMon
         puts "There was an error in #{stat_file}"
         puts "\t" + e.message
         puts "\t" + e.backtrace.join("\n\y\t")
-        
       end
     end
   end
